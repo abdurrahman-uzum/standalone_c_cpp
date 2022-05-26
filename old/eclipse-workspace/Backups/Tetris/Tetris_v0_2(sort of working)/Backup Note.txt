@@ -1,0 +1,13 @@
+I copied collision detection part of my Box project and modified it to work in Tetris.
+For reasons that my mortal brain is unable to comprehend, it is working PERFECTLY.
+
+Right and left collision detections are as one would expect them to be.
+
+Bottom collision detection however, has one cell offset, meaning that it won't give 'true' if tetromino is "on" the 
+ground, but after it is "one cell below" the ground. 
+
+This is because I don't want tetrominos to get fixed instantly when they touch the ground or other tertominos.
+In the original tetris too - as far as I can remember - a tetromino can move even if it's collided from below,
+for one frame. Anyway, I am writting this note to myself, and I believe that I can remember what my intentions was.
+
+Cheers, myself!

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/source/standalone/cmake1/build",
+  "command": "C:\\mingw\\mingw64\\bin\\gcc.exe   -g -o CMakeFiles\\cmakeproject.dir\\main.c.obj -c D:\\source\\standalone\\cmake1\\main.c",
+  "file": "D:/source/standalone/cmake1/main.c"
+}
+]

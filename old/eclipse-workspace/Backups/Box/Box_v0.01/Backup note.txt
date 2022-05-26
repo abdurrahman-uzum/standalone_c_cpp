@@ -1,0 +1,1 @@
+Finally jump and collision control are working properly.

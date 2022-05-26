@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1575374771 source:c:\codeblocksprojects\copypastemazeproject\copypastemazesolvingalgorithm.cpp
+	<windows.h>
+	<iostream>
+	<string>
+

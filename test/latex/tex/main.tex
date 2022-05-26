@@ -1,0 +1,65 @@
+\documentclass[12pt, a4paper]{article}
+%%
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage[bottom]{footmisc}
+\usepackage[justification=centering]{caption}
+\usepackage{verbatim} %adding comment blocks
+\usepackage[ngerman, num]{isodate} %proper date ffs...
+    \monthyearsepgerman{}{}
+    \daymonthsepgerman{}{}
+
+%%
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfig}
+%%
+\usepackage[american]{circuitikz} %%does this work? yes.
+    \ctikzset
+    {
+        resistors/scale=0.8
+    }
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tabularx}
+%\usepackage{booktabs}
+%%
+\usepackage{subfiles}
+%%
+\usetikzlibrary{math}
+
+\graphicspath{ {../img/} }
+\pgfplotsset{
+    compat=newest,
+    standard/.style={
+    axis x line=middle,
+    axis y line=middle,
+    every axis x label/.style={at={(current axis.right of origin)},anchor=west},
+    every axis y label/.style={at={(current axis.above origin)},anchor=south}
+    }
+}
+
+
+\title{EED2309 SEMICONDUCTOR DEVICES LABORATORY 9}
+\author{Abdurrahman ÜZÜM\\2019502099 \and Hüseyin ŞENKULE\\2018502103}
+\date{\today}
+
+\begin{document}
+
+    \maketitle
+
+    I am adding stuff here. I am now adding more stuff.
+ 
+    \subfile{sections/theory.tex}
+
+    \pagebreak
+    
+    \subfile{sections/application.tex}
+
+    \pagebreak
+    
+    \subfile{sections/conclusion.tex}
+
+\end{document}

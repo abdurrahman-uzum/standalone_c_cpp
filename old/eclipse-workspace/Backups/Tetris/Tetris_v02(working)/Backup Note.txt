@@ -1,0 +1,2 @@
+It looks like tetris, works like tetris. I guess I finished the actual working part of the game. 
+What is left is more like cosmetics and user experience at this point. But we'll see.

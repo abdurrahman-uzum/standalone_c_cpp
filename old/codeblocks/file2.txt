@@ -1,0 +1,54 @@
+username
+password
+secret
+abdurrahman
+1234
+elma is a nice fruit
+bot1
+bot1pass
+info
+bot2
+bot2pass
+info2
+bot3
+bot3pass
+info3
+mahmut
+12345678
+ehuehuehue
+botbot
+botbot
+botbot
+thisisatest
+test
+testInfo
+letstryagain
+testagain
+thisissecondtest
+somethingelse
+1234
+shitgonnahappen
+somethingelse2
+4321
+shitalwayshappens
+somethingelse3
+9876
+shitmayhappen
+abdurrahman2
+4321
+I hate apples.
+abdurrahman3
+12344321
+fuck you all.
+hello
+1234
+no i won't.
+testingRegister
+1234
+i am testing
+portakal
+1234
+nope
+portakal
+12345
+no

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="LearningSDL" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/LearningSDL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/LearningSDL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="C:/mingw_dev_lab/include/SDL2" />
+		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image" />
+			<Add directory="C:/mingw_dev_lab/lib" />
+		</Linker>
+		<Unit filename="06_extension_libraries_and_loading_other_image_formats.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="07_texture_loading_and_rendering.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="08_geometry_rendering.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="09_the_viewport.cpp" />
+		<Unit filename="CreateWindow.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_03_Events.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_04_KeyHandling.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_05_Stretching.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_07_Textures.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_08_Geometries.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_08_Geometries_SelfTry.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_1-6_SelfTry.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="SDL_Tutorial_Media/keyPressesMedia/down.bmp" />
+		<Unit filename="SDL_Tutorial_Media/keyPressesMedia/left.bmp" />
+		<Unit filename="SDL_Tutorial_Media/keyPressesMedia/press.bmp" />
+		<Unit filename="SDL_Tutorial_Media/keyPressesMedia/right.bmp" />
+		<Unit filename="SDL_Tutorial_Media/keyPressesMedia/up.bmp" />
+		<Unit filename="SDL_Tutorial_Media/loaded.png" />
+		<Unit filename="SDL_Tutorial_Media/stretch.bmp" />
+		<Unit filename="hello_world.bmp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

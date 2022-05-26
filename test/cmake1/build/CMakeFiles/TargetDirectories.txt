@@ -1,0 +1,3 @@
+D:/source/standalone/cmake1/build/CMakeFiles/cmakeproject.dir
+D:/source/standalone/cmake1/build/CMakeFiles/edit_cache.dir
+D:/source/standalone/cmake1/build/CMakeFiles/rebuild_cache.dir

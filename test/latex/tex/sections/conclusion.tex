@@ -1,0 +1,43 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{ {\subfix{../../img/}} }
+
+\begin{document}
+\section{Conclusion}
+
+    In this experiment, characteristics of n-channel MOSFET are investigated. 
+    
+    In first stage, the the relation between gate voltage and the drain current is observed. It is 
+    seen that so long as the transistor remains in the saturation region, the drain current is a 
+    quadratic function of the gate voltage, where it remains at 0 until the gate voltage exceeds a 
+    certain level. That is, the zero bias threshold voltage, below which the electric field created 
+    by the gate voltage is not enough to form the inversion layer. As $V_{GS}$ increases beyond this
+    threshold, drain current starts to rise, following a parabola. Drain voltage has no effect in 
+    this operation, so long as it is kept higher that the $V_{GS}+V_{th}$, otherwise transistor falls 
+    out of the saturation and enters the triode region, where the drain current now is a linear function
+    of the $V_{GS}$.
+
+    In the second stage, relation between drain voltage and the drain current is observed under 
+    various levels of gate voltage. It is seen that, for any gate voltage that doesn't put the 
+    MOSFET into cut-off, $I_D$ rises almost linearly for relatively small $V_{DS}$. At this region,
+    MOSFET behaves like a voltage controlled resistor whose value is inversly proportional to the 
+    gate voltage. This relation however, for increasing $V_{DS}$, starts to lose its linearity.
+    As the $V_{DS}$ exceeds $V_{GS}-V_{th}$, transistor enters the saturation region, where the 
+    drain current remains constant, independent of the $V_{DS}$. Clearly, both the drain voltage 
+    that puts the transistor into saturation $V_{DS_{(sat)}}$ and the drain current at the 
+    saturation $I_{D_{(sat)}}$ increases with increasing $V_{GS}$.
+
+    Lastly, a resistor in series with the gate is added into the circuit. It is seen that this resistor 
+    had no effect whatsoever on the results of the simulation. However, since the gate behaves like a 
+    small capacitor, when underwent transient simulation, it is seen that this resistor increases the 
+    the time it takes gate to fully reach its maximum, hence delaying the peak of the drain current. 
+    Approximate calculations estimated the value of the gate capacitance to be at the order of picofarads,
+    hence quite small. However, at high frequencies, this capacitive behaviour can be very significant. 
+    Of course, the MOSFET used for this part was a discrete MOSFET, and the MOSFETs in integrated 
+    circuits may have drastically different values. 
+
+    Effect of applying negative $V_{GS}$ is also studied at this part, while it appears to be no different 
+    than applying any below-threshold voltage in DC analysis, it is seen that it can have a significant 
+    effect in trainsient analysis. Capacitive nature of the gate results in diminishing of fast edges, 
+    which consequently would deform any signal with high frequency components.
+
+\end{document}

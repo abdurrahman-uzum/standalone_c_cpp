@@ -1,0 +1,5 @@
+Object class divided into two different classes that are DynamicObject and StaticObject.
+
+Created functions to automate creating, texture loading and rendering static objects.
+
+Created a function to update camera relative to main dynamic object.
