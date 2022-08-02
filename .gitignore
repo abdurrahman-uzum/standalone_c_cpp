@@ -1,1 +1,17 @@
 *.ignore
+**/build
+**/.vscode
+**/.settings
+**/Drivers
+*.dll
+*.lib
+*.a
+*.so
+*.mk
+*.o
+*.d
+*.exe
+*.cproject
+*.project
+*.mxproject
+
