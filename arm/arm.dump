@@ -1,0 +1,698 @@
+arm-none-eabi-gcc (Arm GNU Toolchain 12.2.MPACBTI-Bet1 (Build arm-12-mpacbti.16)) 12.2.0
+Using: -std=gnu99 -g3 -O0 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -ffunction-sections -fdata-sections --specs=nano.specs -c
+\nWith optimisations: -g3 -O0
+
+main.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.arrays_multiDimensional:
+
+00000000 <arrays_multiDimensional>:
+#include <stdio.h>
+
+// defines special type for ( 3 x 4 ) of integers.
+typedef int Special3D[ 3 ][ 4 ];
+
+void arrays_multiDimensional() {
+   0:	b5b0      	push	{r4, r5, r7, lr}
+   2:	b0bc      	sub	sp, #240	; 0xf0
+   4:	af00      	add	r7, sp, #0
+
+    char valuesA[ 5 ][ 2 ] = { {0,1}, {2,3}, {4,5}, {6,7}, {8,9} };
+   6:	4a98      	ldr	r2, [pc, #608]	; (268 <arrays_multiDimensional+0x268>)
+   8:	f107 0390 	add.w	r3, r7, #144	; 0x90
+   c:	ca07      	ldmia	r2, {r0, r1, r2}
+   e:	c303      	stmia	r3!, {r0, r1}
+  10:	801a      	strh	r2, [r3, #0]
+
+	int valuesB[   ][ 3 ] = { {1,3,5} , {2,4,6} };
+  12:	4b96      	ldr	r3, [pc, #600]	; (26c <arrays_multiDimensional+0x26c>)
+  14:	f107 0478 	add.w	r4, r7, #120	; 0x78
+  18:	461d      	mov	r5, r3
+  1a:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+  1c:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+  1e:	e895 0003 	ldmia.w	r5, {r0, r1}
+  22:	e884 0003 	stmia.w	r4, {r0, r1}
+	int valuesC[ 2 ][ 3 ] = { {1,3,5} , {2,4,6} };
+  26:	4b91      	ldr	r3, [pc, #580]	; (26c <arrays_multiDimensional+0x26c>)
+  28:	f107 0460 	add.w	r4, r7, #96	; 0x60
+  2c:	461d      	mov	r5, r3
+  2e:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+  30:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+  32:	e895 0003 	ldmia.w	r5, {r0, r1}
+  36:	e884 0003 	stmia.w	r4, {r0, r1}
+	//int valuesC[ 2 ][  ] = { {1,3,5} , {2,4,6} };// error : array type has incomplete element type
+
+	int valuesE[ 2 ][ 3 ][ 4 ] = {
+  3a:	4a8d      	ldr	r2, [pc, #564]	; (270 <arrays_multiDimensional+0x270>)
+  3c:	463b      	mov	r3, r7
+  3e:	4611      	mov	r1, r2
+  40:	2260      	movs	r2, #96	; 0x60
+  42:	4618      	mov	r0, r3
+  44:	f7ff fffe 	bl	0 <memcpy>
+		{
+			{211, 212, 213, 214} ,  {221, 222, 223, 224} ,  {231, 232, 233, 234}
+		}
+	};
+
+	int distanceAsBytes = (int)&valuesA[0][0] - (int)&valuesA[1][0];
+  48:	f06f 0301 	mvn.w	r3, #1
+  4c:	f8c7 30d4 	str.w	r3, [r7, #212]	; 0xd4
+
+	// see disassembly
+	int value = 0;
+  50:	2300      	movs	r3, #0
+  52:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+	value = valuesA[0][0];
+  56:	f897 3090 	ldrb.w	r3, [r7, #144]	; 0x90
+  5a:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+	value = valuesA[0][1];
+  5e:	f897 3091 	ldrb.w	r3, [r7, #145]	; 0x91
+  62:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+
+	value = valuesA[1][0];
+  66:	f897 3092 	ldrb.w	r3, [r7, #146]	; 0x92
+  6a:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+	value = valuesA[1][1];
+  6e:	f897 3093 	ldrb.w	r3, [r7, #147]	; 0x93
+  72:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+
+	value = valuesA[2][0];
+  76:	f897 3094 	ldrb.w	r3, [r7, #148]	; 0x94
+  7a:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+	value = valuesA[3][1];
+  7e:	f897 3097 	ldrb.w	r3, [r7, #151]	; 0x97
+  82:	f8c7 30d0 	str.w	r3, [r7, #208]	; 0xd0
+
+	const int lengthI = 4;
+  86:	2304      	movs	r3, #4
+  88:	f8c7 30cc 	str.w	r3, [r7, #204]	; 0xcc
+	const int lengthJ = 3;
+  8c:	2303      	movs	r3, #3
+  8e:	f8c7 30c8 	str.w	r3, [r7, #200]	; 0xc8
+	const int lengthK = 2;
+  92:	2302      	movs	r3, #2
+  94:	f8c7 30c4 	str.w	r3, [r7, #196]	; 0xc4
+
+	size_t size = sizeof valuesE;
+  98:	2360      	movs	r3, #96	; 0x60
+  9a:	f8c7 30c0 	str.w	r3, [r7, #192]	; 0xc0
+
+	for ( int k = 0; k < lengthK; k++ ) {
+  9e:	2300      	movs	r3, #0
+  a0:	f8c7 30ec 	str.w	r3, [r7, #236]	; 0xec
+  a4:	e059      	b.n	15a <arrays_multiDimensional+0x15a>
+
+		for ( int j = 0; j < lengthJ; j++ ) {
+  a6:	2300      	movs	r3, #0
+  a8:	f8c7 30e8 	str.w	r3, [r7, #232]	; 0xe8
+  ac:	e04a      	b.n	144 <arrays_multiDimensional+0x144>
+
+			for ( int i = 0; i < lengthI; i++ ) {
+  ae:	2300      	movs	r3, #0
+  b0:	f8c7 30e4 	str.w	r3, [r7, #228]	; 0xe4
+  b4:	e03b      	b.n	12e <arrays_multiDimensional+0x12e>
+
+				int hundreds = k + 1;
+  b6:	f8d7 30ec 	ldr.w	r3, [r7, #236]	; 0xec
+  ba:	3301      	adds	r3, #1
+  bc:	f8c7 30a4 	str.w	r3, [r7, #164]	; 0xa4
+				int tens     = j + 1;
+  c0:	f8d7 30e8 	ldr.w	r3, [r7, #232]	; 0xe8
+  c4:	3301      	adds	r3, #1
+  c6:	f8c7 30a0 	str.w	r3, [r7, #160]	; 0xa0
+				int ones     = i;
+  ca:	f8d7 30e4 	ldr.w	r3, [r7, #228]	; 0xe4
+  ce:	f8c7 309c 	str.w	r3, [r7, #156]	; 0x9c
+
+				valuesE[ k ][ j ][ i ] = 100*hundreds + 10*tens + ones;
+  d2:	f8d7 30a4 	ldr.w	r3, [r7, #164]	; 0xa4
+  d6:	2264      	movs	r2, #100	; 0x64
+  d8:	fb02 f103 	mul.w	r1, r2, r3
+  dc:	f8d7 20a0 	ldr.w	r2, [r7, #160]	; 0xa0
+  e0:	4613      	mov	r3, r2
+  e2:	009b      	lsls	r3, r3, #2
+  e4:	4413      	add	r3, r2
+  e6:	005b      	lsls	r3, r3, #1
+  e8:	18ca      	adds	r2, r1, r3
+  ea:	f8d7 309c 	ldr.w	r3, [r7, #156]	; 0x9c
+  ee:	18d1      	adds	r1, r2, r3
+  f0:	f8d7 20ec 	ldr.w	r2, [r7, #236]	; 0xec
+  f4:	4613      	mov	r3, r2
+  f6:	005b      	lsls	r3, r3, #1
+  f8:	4413      	add	r3, r2
+  fa:	f8d7 20e8 	ldr.w	r2, [r7, #232]	; 0xe8
+  fe:	4413      	add	r3, r2
+ 100:	009a      	lsls	r2, r3, #2
+ 102:	f8d7 30e4 	ldr.w	r3, [r7, #228]	; 0xe4
+ 106:	4413      	add	r3, r2
+ 108:	009b      	lsls	r3, r3, #2
+ 10a:	33f0      	adds	r3, #240	; 0xf0
+ 10c:	443b      	add	r3, r7
+ 10e:	f843 1cf0 	str.w	r1, [r3, #-240]
+				printf( "%d%d%d ", hundreds, tens, ones );
+ 112:	f8d7 309c 	ldr.w	r3, [r7, #156]	; 0x9c
+ 116:	f8d7 20a0 	ldr.w	r2, [r7, #160]	; 0xa0
+ 11a:	f8d7 10a4 	ldr.w	r1, [r7, #164]	; 0xa4
+ 11e:	4855      	ldr	r0, [pc, #340]	; (274 <arrays_multiDimensional+0x274>)
+ 120:	f7ff fffe 	bl	0 <printf>
+			for ( int i = 0; i < lengthI; i++ ) {
+ 124:	f8d7 30e4 	ldr.w	r3, [r7, #228]	; 0xe4
+ 128:	3301      	adds	r3, #1
+ 12a:	f8c7 30e4 	str.w	r3, [r7, #228]	; 0xe4
+ 12e:	f8d7 20e4 	ldr.w	r2, [r7, #228]	; 0xe4
+ 132:	f8d7 30cc 	ldr.w	r3, [r7, #204]	; 0xcc
+ 136:	429a      	cmp	r2, r3
+ 138:	dbbd      	blt.n	b6 <arrays_multiDimensional+0xb6>
+		for ( int j = 0; j < lengthJ; j++ ) {
+ 13a:	f8d7 30e8 	ldr.w	r3, [r7, #232]	; 0xe8
+ 13e:	3301      	adds	r3, #1
+ 140:	f8c7 30e8 	str.w	r3, [r7, #232]	; 0xe8
+ 144:	f8d7 20e8 	ldr.w	r2, [r7, #232]	; 0xe8
+ 148:	f8d7 30c8 	ldr.w	r3, [r7, #200]	; 0xc8
+ 14c:	429a      	cmp	r2, r3
+ 14e:	dbae      	blt.n	ae <arrays_multiDimensional+0xae>
+	for ( int k = 0; k < lengthK; k++ ) {
+ 150:	f8d7 30ec 	ldr.w	r3, [r7, #236]	; 0xec
+ 154:	3301      	adds	r3, #1
+ 156:	f8c7 30ec 	str.w	r3, [r7, #236]	; 0xec
+ 15a:	f8d7 20ec 	ldr.w	r2, [r7, #236]	; 0xec
+ 15e:	f8d7 30c4 	ldr.w	r3, [r7, #196]	; 0xc4
+ 162:	429a      	cmp	r2, r3
+ 164:	db9f      	blt.n	a6 <arrays_multiDimensional+0xa6>
+
+		}//forj
+
+	}//fork
+
+	Special3D* p3D = NULL;
+ 166:	2300      	movs	r3, #0
+ 168:	f8c7 30bc 	str.w	r3, [r7, #188]	; 0xbc
+	size_t allocateBytes = sizeof(Special3D) * lengthK;
+ 16c:	f8d7 20c4 	ldr.w	r2, [r7, #196]	; 0xc4
+ 170:	4613      	mov	r3, r2
+ 172:	005b      	lsls	r3, r3, #1
+ 174:	4413      	add	r3, r2
+ 176:	011b      	lsls	r3, r3, #4
+ 178:	f8c7 30b8 	str.w	r3, [r7, #184]	; 0xb8
+
+	void* buffer = malloc( allocateBytes );
+ 17c:	f8d7 00b8 	ldr.w	r0, [r7, #184]	; 0xb8
+ 180:	f7ff fffe 	bl	0 <malloc>
+ 184:	4603      	mov	r3, r0
+ 186:	f8c7 30b4 	str.w	r3, [r7, #180]	; 0xb4
+	if ( buffer == NULL ) {
+ 18a:	f8d7 30b4 	ldr.w	r3, [r7, #180]	; 0xb4
+ 18e:	2b00      	cmp	r3, #0
+ 190:	d102      	bne.n	198 <arrays_multiDimensional+0x198>
+		// not enough memory, terminate the program with failure
+	    exit( EXIT_FAILURE );
+ 192:	2001      	movs	r0, #1
+ 194:	f7ff fffe 	bl	0 <exit>
+	}
+
+	// Casting void* to int(*)[3][4]. Same effect as casting to Special3D*
+	p3D = (int(*)[3][4]) buffer;
+ 198:	f8d7 30b4 	ldr.w	r3, [r7, #180]	; 0xb4
+ 19c:	f8c7 30bc 	str.w	r3, [r7, #188]	; 0xbc
+
+	for ( int k = 0; k < lengthK; k++ ) {
+ 1a0:	2300      	movs	r3, #0
+ 1a2:	f8c7 30e0 	str.w	r3, [r7, #224]	; 0xe0
+ 1a6:	e051      	b.n	24c <arrays_multiDimensional+0x24c>
+
+		for ( int j = 0; j < lengthJ; j++ ) {
+ 1a8:	2300      	movs	r3, #0
+ 1aa:	f8c7 30dc 	str.w	r3, [r7, #220]	; 0xdc
+ 1ae:	e042      	b.n	236 <arrays_multiDimensional+0x236>
+
+			for ( int i = 0; i < lengthI; i++ ) {
+ 1b0:	2300      	movs	r3, #0
+ 1b2:	f8c7 30d8 	str.w	r3, [r7, #216]	; 0xd8
+ 1b6:	e033      	b.n	220 <arrays_multiDimensional+0x220>
+
+				int hundreds = k + 1;
+ 1b8:	f8d7 30e0 	ldr.w	r3, [r7, #224]	; 0xe0
+ 1bc:	3301      	adds	r3, #1
+ 1be:	f8c7 30b0 	str.w	r3, [r7, #176]	; 0xb0
+				int tens     = j + 1;
+ 1c2:	f8d7 30dc 	ldr.w	r3, [r7, #220]	; 0xdc
+ 1c6:	3301      	adds	r3, #1
+ 1c8:	f8c7 30ac 	str.w	r3, [r7, #172]	; 0xac
+				int ones     = i;
+ 1cc:	f8d7 30d8 	ldr.w	r3, [r7, #216]	; 0xd8
+ 1d0:	f8c7 30a8 	str.w	r3, [r7, #168]	; 0xa8
+
+				p3D[ k ][ j ][ i ] = 100*hundreds + 10*tens + ones;
+ 1d4:	f8d7 30b0 	ldr.w	r3, [r7, #176]	; 0xb0
+ 1d8:	2264      	movs	r2, #100	; 0x64
+ 1da:	fb02 f103 	mul.w	r1, r2, r3
+ 1de:	f8d7 20ac 	ldr.w	r2, [r7, #172]	; 0xac
+ 1e2:	4613      	mov	r3, r2
+ 1e4:	009b      	lsls	r3, r3, #2
+ 1e6:	4413      	add	r3, r2
+ 1e8:	005b      	lsls	r3, r3, #1
+ 1ea:	4419      	add	r1, r3
+ 1ec:	f8d7 20e0 	ldr.w	r2, [r7, #224]	; 0xe0
+ 1f0:	4613      	mov	r3, r2
+ 1f2:	005b      	lsls	r3, r3, #1
+ 1f4:	4413      	add	r3, r2
+ 1f6:	011b      	lsls	r3, r3, #4
+ 1f8:	461a      	mov	r2, r3
+ 1fa:	f8d7 30bc 	ldr.w	r3, [r7, #188]	; 0xbc
+ 1fe:	4413      	add	r3, r2
+ 200:	f8d7 20a8 	ldr.w	r2, [r7, #168]	; 0xa8
+ 204:	4411      	add	r1, r2
+ 206:	f8d7 20dc 	ldr.w	r2, [r7, #220]	; 0xdc
+ 20a:	0090      	lsls	r0, r2, #2
+ 20c:	f8d7 20d8 	ldr.w	r2, [r7, #216]	; 0xd8
+ 210:	4402      	add	r2, r0
+ 212:	f843 1022 	str.w	r1, [r3, r2, lsl #2]
+			for ( int i = 0; i < lengthI; i++ ) {
+ 216:	f8d7 30d8 	ldr.w	r3, [r7, #216]	; 0xd8
+ 21a:	3301      	adds	r3, #1
+ 21c:	f8c7 30d8 	str.w	r3, [r7, #216]	; 0xd8
+ 220:	f8d7 20d8 	ldr.w	r2, [r7, #216]	; 0xd8
+ 224:	f8d7 30cc 	ldr.w	r3, [r7, #204]	; 0xcc
+ 228:	429a      	cmp	r2, r3
+ 22a:	dbc5      	blt.n	1b8 <arrays_multiDimensional+0x1b8>
+		for ( int j = 0; j < lengthJ; j++ ) {
+ 22c:	f8d7 30dc 	ldr.w	r3, [r7, #220]	; 0xdc
+ 230:	3301      	adds	r3, #1
+ 232:	f8c7 30dc 	str.w	r3, [r7, #220]	; 0xdc
+ 236:	f8d7 20dc 	ldr.w	r2, [r7, #220]	; 0xdc
+ 23a:	f8d7 30c8 	ldr.w	r3, [r7, #200]	; 0xc8
+ 23e:	429a      	cmp	r2, r3
+ 240:	dbb6      	blt.n	1b0 <arrays_multiDimensional+0x1b0>
+	for ( int k = 0; k < lengthK; k++ ) {
+ 242:	f8d7 30e0 	ldr.w	r3, [r7, #224]	; 0xe0
+ 246:	3301      	adds	r3, #1
+ 248:	f8c7 30e0 	str.w	r3, [r7, #224]	; 0xe0
+ 24c:	f8d7 20e0 	ldr.w	r2, [r7, #224]	; 0xe0
+ 250:	f8d7 30c4 	ldr.w	r3, [r7, #196]	; 0xc4
+ 254:	429a      	cmp	r2, r3
+ 256:	dba7      	blt.n	1a8 <arrays_multiDimensional+0x1a8>
+		}//forj
+
+	}//fork
+
+    // free the previously allocated memory
+	free( p3D );
+ 258:	f8d7 00bc 	ldr.w	r0, [r7, #188]	; 0xbc
+ 25c:	f7ff fffe 	bl	0 <free>
+
+}//arrays_multiDimensional
+ 260:	bf00      	nop
+ 262:	37f0      	adds	r7, #240	; 0xf0
+ 264:	46bd      	mov	sp, r7
+ 266:	bdb0      	pop	{r4, r5, r7, pc}
+ 268:	00000008 	.word	0x00000008
+ 26c:	00000014 	.word	0x00000014
+ 270:	0000002c 	.word	0x0000002c
+ 274:	00000000 	.word	0x00000000
+
+Disassembly of section .text.arrays_multiDimensionalJagged:
+
+00000000 <arrays_multiDimensionalJagged>:
+
+//-----------------------------------------------------------------------------
+
+void arrays_multiDimensionalJagged() {
+   0:	b580      	push	{r7, lr}
+   2:	b08a      	sub	sp, #40	; 0x28
+   4:	af00      	add	r7, sp, #0
+
+	// jagged array sample
+	// refer https://en.wikipedia.org/wiki/Jagged_array
+	int** values = NULL;
+   6:	2300      	movs	r3, #0
+   8:	61fb      	str	r3, [r7, #28]
+
+    // TODO : implement check for return value of all "malloc()"s for an allocation error
+    int arrayCount = 3;
+   a:	2303      	movs	r3, #3
+   c:	61bb      	str	r3, [r7, #24]
+    values = (int**) malloc( arrayCount * sizeof(int*) );
+   e:	69bb      	ldr	r3, [r7, #24]
+  10:	009b      	lsls	r3, r3, #2
+  12:	4618      	mov	r0, r3
+  14:	f7ff fffe 	bl	0 <malloc>
+  18:	4603      	mov	r3, r0
+  1a:	61fb      	str	r3, [r7, #28]
+
+    const int leastElementCount = 2;
+  1c:	2302      	movs	r3, #2
+  1e:	617b      	str	r3, [r7, #20]
+	for ( int i = 0; i < arrayCount; i++ ) {
+  20:	2300      	movs	r3, #0
+  22:	627b      	str	r3, [r7, #36]	; 0x24
+  24:	e02e      	b.n	84 <arrays_multiDimensionalJagged+0x84>
+
+		int  length = i + leastElementCount;
+  26:	6a7a      	ldr	r2, [r7, #36]	; 0x24
+  28:	697b      	ldr	r3, [r7, #20]
+  2a:	4413      	add	r3, r2
+  2c:	60bb      	str	r3, [r7, #8]
+		int* buffer = malloc( length * sizeof(int) );
+  2e:	68bb      	ldr	r3, [r7, #8]
+  30:	009b      	lsls	r3, r3, #2
+  32:	4618      	mov	r0, r3
+  34:	f7ff fffe 	bl	0 <malloc>
+  38:	4603      	mov	r3, r0
+  3a:	607b      	str	r3, [r7, #4]
+
+		values[ i ] = buffer;
+  3c:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+  3e:	009b      	lsls	r3, r3, #2
+  40:	69fa      	ldr	r2, [r7, #28]
+  42:	4413      	add	r3, r2
+  44:	687a      	ldr	r2, [r7, #4]
+  46:	601a      	str	r2, [r3, #0]
+
+		// fill the buffer
+		for ( int j = 0; j < length; j++ ) {
+  48:	2300      	movs	r3, #0
+  4a:	623b      	str	r3, [r7, #32]
+  4c:	e013      	b.n	76 <arrays_multiDimensionalJagged+0x76>
+
+			values[ i ][ j ] = i*10 + j;
+  4e:	6a7a      	ldr	r2, [r7, #36]	; 0x24
+  50:	4613      	mov	r3, r2
+  52:	009b      	lsls	r3, r3, #2
+  54:	4413      	add	r3, r2
+  56:	005b      	lsls	r3, r3, #1
+  58:	4619      	mov	r1, r3
+  5a:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+  5c:	009b      	lsls	r3, r3, #2
+  5e:	69fa      	ldr	r2, [r7, #28]
+  60:	4413      	add	r3, r2
+  62:	681a      	ldr	r2, [r3, #0]
+  64:	6a3b      	ldr	r3, [r7, #32]
+  66:	009b      	lsls	r3, r3, #2
+  68:	4413      	add	r3, r2
+  6a:	6a3a      	ldr	r2, [r7, #32]
+  6c:	440a      	add	r2, r1
+  6e:	601a      	str	r2, [r3, #0]
+		for ( int j = 0; j < length; j++ ) {
+  70:	6a3b      	ldr	r3, [r7, #32]
+  72:	3301      	adds	r3, #1
+  74:	623b      	str	r3, [r7, #32]
+  76:	6a3a      	ldr	r2, [r7, #32]
+  78:	68bb      	ldr	r3, [r7, #8]
+  7a:	429a      	cmp	r2, r3
+  7c:	dbe7      	blt.n	4e <arrays_multiDimensionalJagged+0x4e>
+	for ( int i = 0; i < arrayCount; i++ ) {
+  7e:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+  80:	3301      	adds	r3, #1
+  82:	627b      	str	r3, [r7, #36]	; 0x24
+  84:	6a7a      	ldr	r2, [r7, #36]	; 0x24
+  86:	69bb      	ldr	r3, [r7, #24]
+  88:	429a      	cmp	r2, r3
+  8a:	dbcc      	blt.n	26 <arrays_multiDimensionalJagged+0x26>
+		}//forj
+
+	}//fori
+
+
+	int distanceAsBytes = (int)&values[0][0] - (int)&values[1][0];
+  8c:	69fb      	ldr	r3, [r7, #28]
+  8e:	681b      	ldr	r3, [r3, #0]
+  90:	461a      	mov	r2, r3
+  92:	69fb      	ldr	r3, [r7, #28]
+  94:	3304      	adds	r3, #4
+  96:	681b      	ldr	r3, [r3, #0]
+  98:	1ad3      	subs	r3, r2, r3
+  9a:	613b      	str	r3, [r7, #16]
+
+	// see disassembly
+	int value = 0;
+  9c:	2300      	movs	r3, #0
+  9e:	60fb      	str	r3, [r7, #12]
+	value = values[0][0];
+  a0:	69fb      	ldr	r3, [r7, #28]
+  a2:	681b      	ldr	r3, [r3, #0]
+  a4:	681b      	ldr	r3, [r3, #0]
+  a6:	60fb      	str	r3, [r7, #12]
+	value = values[0][1];
+  a8:	69fb      	ldr	r3, [r7, #28]
+  aa:	681b      	ldr	r3, [r3, #0]
+  ac:	685b      	ldr	r3, [r3, #4]
+  ae:	60fb      	str	r3, [r7, #12]
+	value = values[0][2];
+  b0:	69fb      	ldr	r3, [r7, #28]
+  b2:	681b      	ldr	r3, [r3, #0]
+  b4:	689b      	ldr	r3, [r3, #8]
+  b6:	60fb      	str	r3, [r7, #12]
+
+	value = values[1][0];
+  b8:	69fb      	ldr	r3, [r7, #28]
+  ba:	3304      	adds	r3, #4
+  bc:	681b      	ldr	r3, [r3, #0]
+  be:	681b      	ldr	r3, [r3, #0]
+  c0:	60fb      	str	r3, [r7, #12]
+	value = values[1][1];
+  c2:	69fb      	ldr	r3, [r7, #28]
+  c4:	3304      	adds	r3, #4
+  c6:	681b      	ldr	r3, [r3, #0]
+  c8:	685b      	ldr	r3, [r3, #4]
+  ca:	60fb      	str	r3, [r7, #12]
+	value = values[1][2];
+  cc:	69fb      	ldr	r3, [r7, #28]
+  ce:	3304      	adds	r3, #4
+  d0:	681b      	ldr	r3, [r3, #0]
+  d2:	689b      	ldr	r3, [r3, #8]
+  d4:	60fb      	str	r3, [r7, #12]
+
+	value = values[2][0];
+  d6:	69fb      	ldr	r3, [r7, #28]
+  d8:	3308      	adds	r3, #8
+  da:	681b      	ldr	r3, [r3, #0]
+  dc:	681b      	ldr	r3, [r3, #0]
+  de:	60fb      	str	r3, [r7, #12]
+	value = values[2][1];
+  e0:	69fb      	ldr	r3, [r7, #28]
+  e2:	3308      	adds	r3, #8
+  e4:	681b      	ldr	r3, [r3, #0]
+  e6:	685b      	ldr	r3, [r3, #4]
+  e8:	60fb      	str	r3, [r7, #12]
+	value = values[2][2];
+  ea:	69fb      	ldr	r3, [r7, #28]
+  ec:	3308      	adds	r3, #8
+  ee:	681b      	ldr	r3, [r3, #0]
+  f0:	689b      	ldr	r3, [r3, #8]
+  f2:	60fb      	str	r3, [r7, #12]
+
+	// TODO : we need lots of "free()"s here...
+
+}//arrays_multiDimensionalJagged
+  f4:	bf00      	nop
+  f6:	3728      	adds	r7, #40	; 0x28
+  f8:	46bd      	mov	sp, r7
+  fa:	bd80      	pop	{r7, pc}
+
+Disassembly of section .text.arrays_multiDimensionalJaggedvsFlat:
+
+00000000 <arrays_multiDimensionalJaggedvsFlat>:
+
+//-----------------------------------------------------------------------------
+
+void arrays_multiDimensionalJaggedvsFlat() {
+   0:	b5b0      	push	{r4, r5, r7, lr}
+   2:	b092      	sub	sp, #72	; 0x48
+   4:	af00      	add	r7, sp, #0
+
+	// jagged array sample
+	// refer https://en.wikipedia.org/wiki/Jagged_array
+
+	int** jagged = NULL;
+   6:	2300      	movs	r3, #0
+   8:	63fb      	str	r3, [r7, #60]	; 0x3c
+    int   flat[3][3] = { {0,1,2}, {10,11,12}, {20,21,22} };
+   a:	4b44      	ldr	r3, [pc, #272]	; (11c <arrays_multiDimensionalJaggedvsFlat+0x11c>)
+   c:	463c      	mov	r4, r7
+   e:	461d      	mov	r5, r3
+  10:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+  12:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+  14:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+  16:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+  18:	682b      	ldr	r3, [r5, #0]
+  1a:	6023      	str	r3, [r4, #0]
+
+    // TODO : implement check for return value of all "malloc"s for an allocation error
+    int arrayCount = 3;
+  1c:	2303      	movs	r3, #3
+  1e:	63bb      	str	r3, [r7, #56]	; 0x38
+    jagged = (int**) malloc( 2 * sizeof(int*) );
+  20:	2008      	movs	r0, #8
+  22:	f7ff fffe 	bl	0 <malloc>
+  26:	4603      	mov	r3, r0
+  28:	63fb      	str	r3, [r7, #60]	; 0x3c
+
+    const int leastElementCount = 2;
+  2a:	2302      	movs	r3, #2
+  2c:	637b      	str	r3, [r7, #52]	; 0x34
+	for ( int i = 0; i < arrayCount; i++ ) {
+  2e:	2300      	movs	r3, #0
+  30:	647b      	str	r3, [r7, #68]	; 0x44
+  32:	e02e      	b.n	92 <arrays_multiDimensionalJaggedvsFlat+0x92>
+
+		int  length = i + leastElementCount;
+  34:	6c7a      	ldr	r2, [r7, #68]	; 0x44
+  36:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+  38:	4413      	add	r3, r2
+  3a:	62bb      	str	r3, [r7, #40]	; 0x28
+		int* buffer = malloc( length * sizeof(int) );
+  3c:	6abb      	ldr	r3, [r7, #40]	; 0x28
+  3e:	009b      	lsls	r3, r3, #2
+  40:	4618      	mov	r0, r3
+  42:	f7ff fffe 	bl	0 <malloc>
+  46:	4603      	mov	r3, r0
+  48:	627b      	str	r3, [r7, #36]	; 0x24
+
+		jagged[ i ] = buffer;
+  4a:	6c7b      	ldr	r3, [r7, #68]	; 0x44
+  4c:	009b      	lsls	r3, r3, #2
+  4e:	6bfa      	ldr	r2, [r7, #60]	; 0x3c
+  50:	4413      	add	r3, r2
+  52:	6a7a      	ldr	r2, [r7, #36]	; 0x24
+  54:	601a      	str	r2, [r3, #0]
+
+		// fill the buffer
+		for ( int j = 0; j < length; j++ ) {
+  56:	2300      	movs	r3, #0
+  58:	643b      	str	r3, [r7, #64]	; 0x40
+  5a:	e013      	b.n	84 <arrays_multiDimensionalJaggedvsFlat+0x84>
+
+			jagged[ i ][ j ] = i*10 + j;
+  5c:	6c7a      	ldr	r2, [r7, #68]	; 0x44
+  5e:	4613      	mov	r3, r2
+  60:	009b      	lsls	r3, r3, #2
+  62:	4413      	add	r3, r2
+  64:	005b      	lsls	r3, r3, #1
+  66:	4619      	mov	r1, r3
+  68:	6c7b      	ldr	r3, [r7, #68]	; 0x44
+  6a:	009b      	lsls	r3, r3, #2
+  6c:	6bfa      	ldr	r2, [r7, #60]	; 0x3c
+  6e:	4413      	add	r3, r2
+  70:	681a      	ldr	r2, [r3, #0]
+  72:	6c3b      	ldr	r3, [r7, #64]	; 0x40
+  74:	009b      	lsls	r3, r3, #2
+  76:	4413      	add	r3, r2
+  78:	6c3a      	ldr	r2, [r7, #64]	; 0x40
+  7a:	440a      	add	r2, r1
+  7c:	601a      	str	r2, [r3, #0]
+		for ( int j = 0; j < length; j++ ) {
+  7e:	6c3b      	ldr	r3, [r7, #64]	; 0x40
+  80:	3301      	adds	r3, #1
+  82:	643b      	str	r3, [r7, #64]	; 0x40
+  84:	6c3a      	ldr	r2, [r7, #64]	; 0x40
+  86:	6abb      	ldr	r3, [r7, #40]	; 0x28
+  88:	429a      	cmp	r2, r3
+  8a:	dbe7      	blt.n	5c <arrays_multiDimensionalJaggedvsFlat+0x5c>
+	for ( int i = 0; i < arrayCount; i++ ) {
+  8c:	6c7b      	ldr	r3, [r7, #68]	; 0x44
+  8e:	3301      	adds	r3, #1
+  90:	647b      	str	r3, [r7, #68]	; 0x44
+  92:	6c7a      	ldr	r2, [r7, #68]	; 0x44
+  94:	6bbb      	ldr	r3, [r7, #56]	; 0x38
+  96:	429a      	cmp	r2, r3
+  98:	dbcc      	blt.n	34 <arrays_multiDimensionalJaggedvsFlat+0x34>
+
+		}//forj
+
+	}//fori
+
+	int distanceAsBytes = 0;
+  9a:	2300      	movs	r3, #0
+  9c:	633b      	str	r3, [r7, #48]	; 0x30
+	distanceAsBytes = (int)&jagged[0][0] - (int)&jagged[1][0];
+  9e:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  a0:	681b      	ldr	r3, [r3, #0]
+  a2:	461a      	mov	r2, r3
+  a4:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  a6:	3304      	adds	r3, #4
+  a8:	681b      	ldr	r3, [r3, #0]
+  aa:	1ad3      	subs	r3, r2, r3
+  ac:	633b      	str	r3, [r7, #48]	; 0x30
+	distanceAsBytes = (int)&flat[0][0]   - (int)&flat[1][0];
+  ae:	f06f 030b 	mvn.w	r3, #11
+  b2:	633b      	str	r3, [r7, #48]	; 0x30
+
+	// see disassembly
+	int value = 0;
+  b4:	2300      	movs	r3, #0
+  b6:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	value = flat[0][0];
+  b8:	683b      	ldr	r3, [r7, #0]
+  ba:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = jagged[0][0];
+  bc:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  be:	681b      	ldr	r3, [r3, #0]
+  c0:	681b      	ldr	r3, [r3, #0]
+  c2:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	value = jagged[0][0];
+  c4:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  c6:	681b      	ldr	r3, [r3, #0]
+  c8:	681b      	ldr	r3, [r3, #0]
+  ca:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = jagged[0][1];
+  cc:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  ce:	681b      	ldr	r3, [r3, #0]
+  d0:	685b      	ldr	r3, [r3, #4]
+  d2:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = jagged[0][2];
+  d4:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  d6:	681b      	ldr	r3, [r3, #0]
+  d8:	689b      	ldr	r3, [r3, #8]
+  da:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	value = jagged[1][0];
+  dc:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  de:	3304      	adds	r3, #4
+  e0:	681b      	ldr	r3, [r3, #0]
+  e2:	681b      	ldr	r3, [r3, #0]
+  e4:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = jagged[1][1];
+  e6:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  e8:	3304      	adds	r3, #4
+  ea:	681b      	ldr	r3, [r3, #0]
+  ec:	685b      	ldr	r3, [r3, #4]
+  ee:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = jagged[1][2];
+  f0:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
+  f2:	3304      	adds	r3, #4
+  f4:	681b      	ldr	r3, [r3, #0]
+  f6:	689b      	ldr	r3, [r3, #8]
+  f8:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	value = flat[0][0];
+  fa:	683b      	ldr	r3, [r7, #0]
+  fc:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = flat[0][1];
+  fe:	687b      	ldr	r3, [r7, #4]
+ 100:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = flat[0][2];
+ 102:	68bb      	ldr	r3, [r7, #8]
+ 104:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	value = flat[1][0];
+ 106:	68fb      	ldr	r3, [r7, #12]
+ 108:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = flat[1][1];
+ 10a:	693b      	ldr	r3, [r7, #16]
+ 10c:	62fb      	str	r3, [r7, #44]	; 0x2c
+	value = flat[1][2];
+ 10e:	697b      	ldr	r3, [r7, #20]
+ 110:	62fb      	str	r3, [r7, #44]	; 0x2c
+
+	// TODO : we need lots of "free()"s here...
+
+}//arrays_multiDimensionalJagged
+ 112:	bf00      	nop
+ 114:	3748      	adds	r7, #72	; 0x48
+ 116:	46bd      	mov	sp, r7
+ 118:	bdb0      	pop	{r4, r5, r7, pc}
+ 11a:	bf00      	nop
+ 11c:	0000008c 	.word	0x0000008c

@@ -1,0 +1,28 @@
+
+test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+int main( void )
+{
+   0:	55                   	push   rbp
+   1:	48 89 e5             	mov    rbp,rsp
+    int a = 0;
+   4:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [rbp-0x4],0x0
+    int b = 0;
+   b:	c7 45 f8 00 00 00 00 	mov    DWORD PTR [rbp-0x8],0x0
+
+    int c;
+
+    c = a + b;
+  12:	8b 55 fc             	mov    edx,DWORD PTR [rbp-0x4]
+  15:	8b 45 f8             	mov    eax,DWORD PTR [rbp-0x8]
+  18:	01 d0                	add    eax,edx
+  1a:	89 45 f4             	mov    DWORD PTR [rbp-0xc],eax
+
+    return 0;
+  1d:	b8 00 00 00 00       	mov    eax,0x0
+  22:	5d                   	pop    rbp
+  23:	c3                   	ret    

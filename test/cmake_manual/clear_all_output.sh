@@ -17,9 +17,9 @@ read -p "Continue? [yN] " input
 
 if [ "$input" == "y" ]; then
 
-    rm -rf SCRIPT_DIR/build/*
-    rm -rf SCRIPT_DIR/lib/*
-    rm -rf SCRIPT_DIR/test/bin/*
+    rm -rf $SCRIPT_DIR/build/*
+    rm -rf $SCRIPT_DIR/lib/*
+    rm -rf $SCRIPT_DIR/test/bin/*
 
 else
 
